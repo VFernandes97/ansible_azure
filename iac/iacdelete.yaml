@@ -1,0 +1,39 @@
+- hosts: localhost
+  connection: local
+  tasks:
+  - name: Delete a VM and all resources that were autocreated
+    azure_rm_virtualmachine:
+      resource_group: rg1
+      name: vm1
+      state: absent
+  - name: Delete a virtual network interface card
+    azure_rm_networkinterface:
+      name: nic1
+      resource_group: rg1
+      virtual_network: vnet1
+      subnet: frontendsubnet
+      public_ip_name: pip1
+      security_group: nsg1
+      state: absent
+  - name: Delete public IP address
+    azure_rm_publicipaddress:
+      name: pip1
+      resource_group: rg1
+      allocation_method: Static
+      state: absent
+  - name: Delete a NSG(Network Security Group with some rules)
+    azure_rm_securitygroup:
+      resource_group: rg1
+      name: nsg1
+      state: absent
+  - name: Delete VNET
+    azure_rm_virtualnetwork:
+      resource_group: rg1
+      name: vnet1
+      location: eastus
+      state: absent
+  - name: Remove a Resource Group
+    azure_rm_resourcegroup:
+      name: rg1
+      state: absent
+      force_delete_nonempty: yes

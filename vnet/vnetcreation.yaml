@@ -1,0 +1,20 @@
+-   hosts: localhost
+    connection: local
+    tasks:
+     - name: Create VNET(Virtual Network)
+       azure_rm_virtualnetwork:
+         resource_group: rg1
+         name: vnet1
+         address_prefixes: "10.0.0.0/16"
+     - name: Create SUBNET in VNET
+       azure_rm_subnet:
+         resource_group: rg1
+         name: frontendsubnet
+         address_prefix: "10.0.1.0/24"
+         virtual_network: vnet1
+     - name: Create SUBNET in VNET
+       azure_rm_subnet:
+          resource_group: rg1
+          name: backendsubnet
+          address_prefix: "10.0.2.0/24"
+          virtual_network: vnet1

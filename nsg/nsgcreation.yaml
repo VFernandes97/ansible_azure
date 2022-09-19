@@ -1,0 +1,17 @@
+ - hosts: [localhost]
+   connection: local
+   tasks:
+    - name: Create a NSG(Network Security Group with some rules)
+      azure_rm_securitygroup:
+        resource_group: rg1
+        name: nsg1
+        purge_rules: yes
+        rules:
+          - name: 'AllowSSH'
+            protocol: Tcp
+            source_address_prefix: 'seuip'
+            destination_port_range: 22
+            access: Allow
+            priority: 100
+            direction: Inbound
+

@@ -1,0 +1,8 @@
+ - hosts: [localhost]
+   connection: local
+   tasks:
+    - name: Delete a NSG(Network Security Group with some rules)
+      azure_rm_securitygroup:
+        resource_group: rg1
+        name: nsg1
+        state: absent

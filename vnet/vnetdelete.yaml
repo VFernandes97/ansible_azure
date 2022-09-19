@@ -1,0 +1,9 @@
+- hosts: [localhost]
+  connection: local
+  tasks:
+    - name: Delete VNET
+      azure_rm_virtualnetwork:
+         resource_group: rg1
+         name: vnet1
+         location: eastus
+         state: absent

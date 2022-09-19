@@ -1,0 +1,12 @@
+ - hosts: [localhost]
+   connection: local
+   tasks:
+    - name: Delete virtual network interface card
+      azure_rm_networkinterface:
+        name: nic1
+        resource_group: rg1
+        virtual_network: vnet1
+        subnet: frontendsubnet
+        public_ip_name: pip1
+        security_group: nsg1
+        state: absent

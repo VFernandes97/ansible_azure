@@ -1,0 +1,9 @@
+- hosts: [localhost]
+  connection: local
+  tasks:
+   - name: Delete public IP address
+     azure_rm_publicipaddress:
+       name: pip1
+       resource_group: rg1
+       allocation_method: Static
+       state: absent
