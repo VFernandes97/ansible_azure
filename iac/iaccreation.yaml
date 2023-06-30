@@ -30,7 +30,7 @@
          rules:
            - name: 'AllowSSH'
              protocol: Tcp
-             source_address_prefix: 'seuip'
+             source_address_prefix: 'ipaddress'
              destination_port_range: 22
              access: Allow
              priority: 100
@@ -56,7 +56,7 @@
          admin_username: vmatsuda
          ssh_password_enabled: false
          ssh_public_keys:
-           - path: /home/vmatsuda/.ssh/authorized_keys
+           - path: /home/user/.ssh/authorized_keys
              key_data: "Public Key Here !!! Ex: id_rsa.pub "
          network_interfaces: nic1
          managed_disk_type: Standard_LRS
